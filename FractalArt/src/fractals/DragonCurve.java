@@ -2,6 +2,7 @@ package fractals;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
@@ -15,9 +16,10 @@ public class DragonCurve extends JPanel {
 	
 	@Override
 	public void paintComponent(Graphics g) {
+		Graphics2D G = (Graphics2D)g;
 		int width = getWidth();
 		int height = getHeight();
-		g.setColor(Color.WHITESMOKE);
-		g.drawLine(50, height / 2, width - 50, height / 2);
+		G.setColor(Color.WHITESMOKE);
+		G.drawLine(50, height / 2, width - 50, height / 2);
 	}
 }
