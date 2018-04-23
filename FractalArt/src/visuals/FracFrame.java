@@ -52,6 +52,7 @@ public class FracFrame extends JFrame {
 		buttonPanel.setLayout(new GridLayout(1, 6, 0, 0));
 		
 		JButton btnDragon = new JButton("Dragon Curve");
+		buttonPanel.add(btnDragon);
 		btnDragon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DragonCurve dragon = new DragonCurve();
@@ -59,7 +60,6 @@ public class FracFrame extends JFrame {
 				repaint();
 			}
 		});
-		buttonPanel.add(btnDragon);
 		
 		JButton btnSierpinski = new JButton("Sierpinski Triangle");
 		buttonPanel.add(btnSierpinski);
