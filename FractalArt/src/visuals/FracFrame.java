@@ -7,6 +7,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import fractals.DragonCurve;
+
+import java.awt.Canvas;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+
 public class FracFrame extends JFrame {
 
 	private JPanel contentPane;
@@ -38,8 +47,22 @@ public class FracFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		JPanel panel = new JPanel();
-		contentPane.add(panel, BorderLayout.CENTER);
+		JPanel buttonPanel = new JPanel();
+		contentPane.add(buttonPanel, BorderLayout.NORTH);
+		buttonPanel.setLayout(new GridLayout(1, 6, 0, 0));
+		
+		JButton btnDragon = new JButton("Dragon Curve");
+		btnDragon.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DragonCurve dragon = new DragonCurve();
+				contentPane.add(dragon, BorderLayout.CENTER);
+				repaint();
+			}
+		});
+		buttonPanel.add(btnDragon);
+		
+		JButton btnSierpinski = new JButton("Sierpinski Triangle");
+		buttonPanel.add(btnSierpinski);
 	}
 
 }
