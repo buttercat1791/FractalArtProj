@@ -57,7 +57,6 @@ public class FracFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				DragonCurve dragon = new DragonCurve();
 				contentPane.add(dragon, BorderLayout.CENTER);
-				repaint();
 			}
 		});
 		
