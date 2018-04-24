@@ -13,14 +13,20 @@ public class DragonCurve extends JPanel {
 		this.setBackground(Color.WHITE);
 	}
 	
+	
 	@Override
 	public void paintComponent(Graphics g) {
+
 		Graphics2D g2 = (Graphics2D)g;
 		
 		int width = this.getWidth();
 		int height = this.getHeight();
 		
-		g2.setPaint(Color.BLACK);
+
+		g2.setPaint(Color.red);
 		g2.drawLine(50, height / 2, width - 50, height / 2);
+		
+			
 	}
+
 }
