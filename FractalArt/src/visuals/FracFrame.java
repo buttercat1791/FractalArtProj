@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JSlider;
 
 public class FracFrame extends JFrame {
 
@@ -55,13 +56,16 @@ public class FracFrame extends JFrame {
 		buttonPanel.add(btnDragon);
 		btnDragon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DragonCurve dragon = new DragonCurve();
+				DragonCurve dragon = new DragonCurve(1);
 				contentPane.add(dragon, BorderLayout.CENTER);
 			}
 		});
 		
 		JButton btnSierpinski = new JButton("Sierpinski Triangle");
 		buttonPanel.add(btnSierpinski);
+		
+		JSlider slider = new JSlider();
+		contentPane.add(slider, BorderLayout.SOUTH);
 	}
 
 }

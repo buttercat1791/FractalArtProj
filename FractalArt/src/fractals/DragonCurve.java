@@ -9,8 +9,8 @@ import javax.swing.JPanel;
 
 public class DragonCurve extends JPanel {
 	
-	public DragonCurve() {
-		this.setBackground(Color.WHITE);
+	public DragonCurve(int iterations) {
+		
 	}
 	
 	@Override
