@@ -82,18 +82,31 @@ public class FracFrame extends JFrame {
 		buttonPanel.add(btnClear);
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int a = contentPane.getComponentCount();
-				System.out.println(a);
-				if(a > 1) {
-					//for(int i = 1; i < a; i++) 
-					contentPane.remove(1);
-					contentPane.revalidate();
-					contentPane.repaint();
-				}
+				//int a = contentPane.getComponentCount();
+				//System.out.println(a);
+				clearPane(contentPane);
+				contentPane.revalidate();
+				contentPane.repaint();
+				
 			}
 		});
 		
 
 	}
+	
+	//Recursive function for removing drawn components from JPanel
+	//Used in Clear button
+	public void clearPane(JPanel jp)
+	{
+		int numComps = jp.getComponentCount();
+		if(numComps == 1)
+		{
+			return;
+		} else
+		{
+			jp.remove(1);
+			clearPane(jp);
+		}
 
+	}
 }
