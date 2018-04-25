@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import fractals.DragonCurve;
+import fractals.*;
 
 import java.awt.Canvas;
 import java.awt.GridLayout;
@@ -53,33 +53,44 @@ public class FracFrame extends JFrame {
 		contentPane.add(buttonPanel, BorderLayout.NORTH);
 		buttonPanel.setLayout(new GridLayout(2, 3, 0, 0));
 		
+		JSlider slider = new JSlider();
+		contentPane.add(slider, BorderLayout.SOUTH);
+		
 		JButton btnDragon = new JButton("Dragon Curve");
 		buttonPanel.add(btnDragon);
 		btnDragon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DragonCurve dragon = new DragonCurve(1);
 				contentPane.add(dragon, BorderLayout.CENTER);
-				
-				//Revalidates container and repaints the panel
 				contentPane.revalidate();
 				contentPane.repaint();
 			}
 		});
 		
-
 		JButton btnSierpinski = new JButton("Sierpinski Triangle");
 		buttonPanel.add(btnSierpinski);
 		
-<<<<<<< HEAD
-		JSlider slider = new JSlider();
-		contentPane.add(slider, BorderLayout.SOUTH);
-	}
-=======
-		JButton btnB3 = new JButton("B3");
-		buttonPanel.add(btnB3);
+		JButton btnMandelbrot = new JButton("Mandelbrot Set");
+		buttonPanel.add(btnMandelbrot);
+		btnMandelbrot.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MandelbrotSet mandel = new MandelbrotSet();
+				contentPane.add(mandel, BorderLayout.CENTER);
+				contentPane.revalidate();
+				contentPane.repaint();
+			}
+		});
 		
-		JButton btnB4 = new JButton("B4");
-		buttonPanel.add(btnB4);
+		JButton btnJulia = new JButton("Julia Set");
+		buttonPanel.add(btnJulia);
+		btnJulia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JuliaSet julia = new JuliaSet();
+				contentPane.add(julia, BorderLayout.CENTER);
+				contentPane.revalidate();
+				contentPane.repaint();
+			}
+		});
 		
 		JButton btnB5 = new JButton("B5");
 		buttonPanel.add(btnB5);
@@ -96,9 +107,6 @@ public class FracFrame extends JFrame {
 				
 			}
 		});
-		
->>>>>>> branch 'master' of https://github.com/mjjurkoic/FractalArtProj.git
-
 	}
 	
 	//Recursive function for removing drawn components from JPanel
