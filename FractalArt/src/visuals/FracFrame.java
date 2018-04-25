@@ -19,7 +19,7 @@ import javax.swing.JSlider;
 
 public class FracFrame extends JFrame {
 
-	private JPanel contentPane;
+	private JPanel contentPane = new JPanel();
 
 	/**
 	 * Launch the application.
@@ -42,15 +42,16 @@ public class FracFrame extends JFrame {
 	 */
 	public FracFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(150, 100, 900, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
+	//	contentPane.add(new DragonCurve(), BorderLayout.CENTER);
 		
 		JPanel buttonPanel = new JPanel();
 		contentPane.add(buttonPanel, BorderLayout.NORTH);
-		buttonPanel.setLayout(new GridLayout(1, 6, 0, 0));
+		buttonPanel.setLayout(new GridLayout(2, 3, 0, 0));
 		
 		JButton btnDragon = new JButton("Dragon Curve");
 		buttonPanel.add(btnDragon);
@@ -58,14 +59,61 @@ public class FracFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				DragonCurve dragon = new DragonCurve(1);
 				contentPane.add(dragon, BorderLayout.CENTER);
+				
+				//Revalidates container and repaints the panel
+				contentPane.revalidate();
+				contentPane.repaint();
 			}
 		});
 		
+
 		JButton btnSierpinski = new JButton("Sierpinski Triangle");
 		buttonPanel.add(btnSierpinski);
 		
+<<<<<<< HEAD
 		JSlider slider = new JSlider();
 		contentPane.add(slider, BorderLayout.SOUTH);
 	}
+=======
+		JButton btnB3 = new JButton("B3");
+		buttonPanel.add(btnB3);
+		
+		JButton btnB4 = new JButton("B4");
+		buttonPanel.add(btnB4);
+		
+		JButton btnB5 = new JButton("B5");
+		buttonPanel.add(btnB5);
+		
+		JButton btnClear = new JButton("Clear Panel");
+		buttonPanel.add(btnClear);
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//int a = contentPane.getComponentCount();
+				//System.out.println(a);
+				clearPane(contentPane);
+				contentPane.revalidate();
+				contentPane.repaint();
+				
+			}
+		});
+		
+>>>>>>> branch 'master' of https://github.com/mjjurkoic/FractalArtProj.git
 
+	}
+	
+	//Recursive function for removing drawn components from JPanel
+	//Used in Clear button
+	public void clearPane(JPanel jp)
+	{
+		int numComps = jp.getComponentCount();
+		if(numComps == 1)
+		{
+			return;
+		} else
+		{
+			jp.remove(1);
+			clearPane(jp);
+		}
+
+	}
 }
