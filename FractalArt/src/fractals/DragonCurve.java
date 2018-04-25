@@ -13,7 +13,7 @@ public class DragonCurve extends JPanel {
 	String X = "X+YF+";
 	String Y = "-FX-Y";
 	
-	public DragonCurve(int iterations) {
+	public DragonCurve() {
 		
 	}
 	
