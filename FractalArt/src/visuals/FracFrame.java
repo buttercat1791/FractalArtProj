@@ -60,6 +60,7 @@ public class FracFrame extends JFrame {
 		buttonPanel.add(btnDragon);
 		btnDragon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				clearPane(contentPane);
 				DragonCurve dragon = new DragonCurve(1);
 				contentPane.add(dragon, BorderLayout.CENTER);
 				contentPane.revalidate();
@@ -74,6 +75,7 @@ public class FracFrame extends JFrame {
 		buttonPanel.add(btnMandelbrot);
 		btnMandelbrot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				clearPane(contentPane);
 				MandelbrotSet mandel = new MandelbrotSet();
 				contentPane.add(mandel, BorderLayout.CENTER);
 				contentPane.revalidate();
@@ -85,6 +87,7 @@ public class FracFrame extends JFrame {
 		buttonPanel.add(btnJulia);
 		btnJulia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				clearPane(contentPane);
 				JuliaSet julia = new JuliaSet();
 				contentPane.add(julia, BorderLayout.CENTER);
 				contentPane.revalidate();
