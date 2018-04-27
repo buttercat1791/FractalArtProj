@@ -42,7 +42,7 @@ public class FracFrame extends JFrame {
 	 */
 	public FracFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(150, 100, 900, 600);
+		setBounds(150, 100, 1500, 1000);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -53,7 +53,7 @@ public class FracFrame extends JFrame {
 		contentPane.add(buttonPanel, BorderLayout.NORTH);
 		buttonPanel.setLayout(new GridLayout(2, 3, 0, 0));
 		
-		JSlider slider = new JSlider();
+		JSlider slider = new JSlider(1, 15, 1);
 		contentPane.add(slider, BorderLayout.SOUTH);
 		
 		JButton btnDragon = new JButton("Dragon Curve");

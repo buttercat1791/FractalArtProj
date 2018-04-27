@@ -17,10 +17,10 @@ public class DragonCurve extends JPanel {
     private int iter;
  
     public DragonCurve() {
-    	iter = 10;	// Magic number for testing, remove when slider is implemented
+    	double size = 0;	// Value scales image size based on JPanel size
+    	iter = 15;	// Magic number for testing, remove when slider is implemented
         turns = getSequence(iter);
         startingAngle = -iter * (Math.PI / 4);
-        side = 400 / Math.pow(2, iter / 2.);
     }
  
     public List<Integer> getSequence(int iterations) {
@@ -44,9 +44,14 @@ public class DragonCurve extends JPanel {
     public void paint(Graphics g) {
     	int width = this.getWidth();
     	int height = this.getHeight();
+    	if (width > height) {
+    		side = (height / 1.5) / Math.pow(2, iter / 2.);
+    	} else if (width < height) {
+    		side = (width / 1.5) / Math.pow(2, iter / 2.);
+    	}
         g.setColor(Color.BLACK);
         double angle = startingAngle;
-        int x1 = 230, y1 = 350;
+        int x1 = width - (int)side, y1 = height - (int)side * 2;
         int x2 = x1 + (int) (Math.cos(angle) * side);
         int y2 = y1 + (int) (Math.sin(angle) * side);
         g.drawLine(x1, y1, x2, y2);
