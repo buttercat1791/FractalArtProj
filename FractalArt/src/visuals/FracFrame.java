@@ -10,12 +10,15 @@ import javax.swing.border.EmptyBorder;
 import fractals.*;
 
 import java.awt.Canvas;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Toolkit;
 
 import javax.swing.JButton;
 import javax.swing.JSlider;
+import javax.swing.WindowConstants;
 
 public class FracFrame extends JFrame {
 
@@ -26,6 +29,7 @@ public class FracFrame extends JFrame {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					FracFrame frame = new FracFrame();
@@ -41,8 +45,11 @@ public class FracFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public FracFrame() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(150, 100, 1500, 1000);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int width = (int)screenSize.getWidth();
+		int height = (int)screenSize.getHeight();
+		setBounds((width/10), (height/10), (8 * (width/10)), (8 * (height/10)));
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -59,6 +66,7 @@ public class FracFrame extends JFrame {
 		JButton btnDragon = new JButton("Dragon Curve");
 		buttonPanel.add(btnDragon);
 		btnDragon.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				clearPane(contentPane);
 				DragonCurve dragon = new DragonCurve();
@@ -74,6 +82,7 @@ public class FracFrame extends JFrame {
 		JButton btnMandelbrot = new JButton("Mandelbrot Set");
 		buttonPanel.add(btnMandelbrot);
 		btnMandelbrot.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				clearPane(contentPane);
 				MandelbrotSet mandel = new MandelbrotSet();
@@ -86,6 +95,7 @@ public class FracFrame extends JFrame {
 		JButton btnJulia = new JButton("Julia Set");
 		buttonPanel.add(btnJulia);
 		btnJulia.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				clearPane(contentPane);
 				JuliaSet julia = new JuliaSet();
@@ -101,6 +111,7 @@ public class FracFrame extends JFrame {
 		JButton btnClear = new JButton("Clear Panel");
 		buttonPanel.add(btnClear);
 		btnClear.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				//int a = contentPane.getComponentCount();
 				//System.out.println(a);
