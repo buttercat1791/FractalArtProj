@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import fractals.*;
 
@@ -45,6 +47,9 @@ public class FracFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public FracFrame() {
+		// Create fractal classes here
+		DragonCurve dragon = new DragonCurve();
+		
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int width = (int)screenSize.getWidth();
@@ -60,19 +65,30 @@ public class FracFrame extends JFrame {
 		contentPane.add(buttonPanel, BorderLayout.NORTH);
 		buttonPanel.setLayout(new GridLayout(2, 3, 0, 0));
 		
-		JSlider slider = new JSlider(1, 15, 1);
-		contentPane.add(slider, BorderLayout.SOUTH);
+		// Slider sets number of iterations to display for fractal
+		JSlider iterSlider = new JSlider(0, 15, 1);
+		contentPane.add(iterSlider, BorderLayout.SOUTH);
+		iterSlider.setMajorTickSpacing(5);
+		iterSlider.setMinorTickSpacing(1);
+		iterSlider.setPaintTicks(true);
+		iterSlider.setSnapToTicks(true);
+		iterSlider.setPaintLabels(true);
+		iterSlider.addChangeListener(new ChangeListener() {
+			// Change in slider changes iteration values for all fractals
+			public void stateChanged(ChangeEvent e) {
+				int val = iterSlider.getValue();
+				dragon.setIter(val);
+			}
+		});
 		
+		// Dragon Curve button
 		JButton btnDragon = new JButton("Dragon Curve");
 		buttonPanel.add(btnDragon);
 		btnDragon.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				clearPane(contentPane);
-				DragonCurve dragon = new DragonCurve();
 				contentPane.add(dragon, BorderLayout.CENTER);
-				contentPane.revalidate();
-				contentPane.repaint();
+				dragon.setVisible(true);
 			}
 		});
 		
@@ -81,29 +97,9 @@ public class FracFrame extends JFrame {
 		
 		JButton btnMandelbrot = new JButton("Mandelbrot Set");
 		buttonPanel.add(btnMandelbrot);
-		btnMandelbrot.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				clearPane(contentPane);
-				MandelbrotSet mandel = new MandelbrotSet();
-				contentPane.add(mandel, BorderLayout.CENTER);
-				contentPane.revalidate();
-				contentPane.repaint();
-			}
-		});
 		
 		JButton btnJulia = new JButton("Julia Set");
 		buttonPanel.add(btnJulia);
-		btnJulia.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				clearPane(contentPane);
-				JuliaSet julia = new JuliaSet();
-				contentPane.add(julia, BorderLayout.CENTER);
-				contentPane.revalidate();
-				contentPane.repaint();
-			}
-		});
 		
 		JButton btnB5 = new JButton("B5");
 		buttonPanel.add(btnB5);
