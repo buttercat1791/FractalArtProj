@@ -54,7 +54,7 @@ public class FracFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-	//	contentPane.add(new DragonCurve(), BorderLayout.CENTER);
+
 		
 		JPanel buttonPanel = new JPanel();
 		contentPane.add(buttonPanel, BorderLayout.NORTH);
@@ -128,12 +128,12 @@ public class FracFrame extends JFrame {
 	public void clearPane(JPanel jp)
 	{
 		int numComps = jp.getComponentCount();
-		if(numComps == 1)
+		if(numComps == 2)
 		{
 			return;
 		} else
 		{
-			jp.remove(1);
+			jp.remove(2);
 			clearPane(jp);
 		}
 

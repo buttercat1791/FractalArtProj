@@ -44,13 +44,13 @@ public class DragonCurve extends JPanel {
     	int width = this.getWidth();
     	int height = this.getHeight();
     	if (width > height) {
-    		side = (height / 1) / Math.pow(2, iter / 2.);
+    		side = (height / 1.5) / Math.pow(2, iter / 2.);
     	} else if (width < height) {
-    		side = (width / 1) / Math.pow(2, iter / 2.);
+    		side = (width / 1.5) / Math.pow(2, iter / 2.);
     	}
         g.setColor(Color.BLACK);
         double angle = startingAngle;
-        int x1 = width - 350* (int)side, y1 = height - 50* (int)side * 2;
+        int x1 = width/3, y1 = (int)(height/1.5);
         int x2 = x1 + (int) (Math.cos(angle) * side);
         int y2 = y1 + (int) (Math.sin(angle) * side);
         g.drawLine(x1, y1, x2, y2);
