@@ -47,9 +47,7 @@ public class FracFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public FracFrame() {
-		// Create fractal classes here
-		DragonCurve dragon = new DragonCurve();
-		
+
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int width = (int)screenSize.getWidth();
@@ -65,6 +63,7 @@ public class FracFrame extends JFrame {
 		contentPane.add(buttonPanel, BorderLayout.NORTH);
 		buttonPanel.setLayout(new GridLayout(2, 3, 0, 0));
 		
+		
 		// Slider sets number of iterations to display for fractal
 		JSlider iterSlider = new JSlider(0, 15, 1);
 		contentPane.add(iterSlider, BorderLayout.SOUTH);
@@ -77,7 +76,10 @@ public class FracFrame extends JFrame {
 			// Change in slider changes iteration values for all fractals
 			public void stateChanged(ChangeEvent e) {
 				int val = iterSlider.getValue();
-				dragon.setIter(val);
+				clearPane(contentPane);	
+				contentPane.revalidate();
+				contentPane.repaint();
+				System.out.println(contentPane.getComponentOrientation().toString());
 			}
 		});
 		
@@ -87,8 +89,11 @@ public class FracFrame extends JFrame {
 		btnDragon.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				DragonCurve dragon = new DragonCurve(iterSlider.getValue());
 				contentPane.add(dragon, BorderLayout.CENTER);
 				dragon.setVisible(true);
+				contentPane.revalidate();
+				contentPane.repaint();
 			}
 		});
 		
