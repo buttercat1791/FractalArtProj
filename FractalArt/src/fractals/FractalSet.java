@@ -18,7 +18,7 @@ public class FractalSet extends JPanel {
 	
 	private int iter;	// Number of iterations
 
-	public FractalSets() {
+	public FractalSet() {
 		
 	}
 	

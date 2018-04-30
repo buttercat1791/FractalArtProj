@@ -25,8 +25,10 @@ public class FracFrame extends JFrame {
 
 	private JPanel contentPane = new JPanel();
 	
+	//Set objects up for fractals
 	private DragonCurve dragon = new DragonCurve();
 	private SierpinskiTriangle sierpinski = new SierpinskiTriangle();
+	private JuliaSet julia = new JuliaSet();
 	
 	private Fractal mode;
 
@@ -56,7 +58,9 @@ public class FracFrame extends JFrame {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int width = (int)screenSize.getWidth();
 		int height = (int)screenSize.getHeight();
-		setBounds((width/10), (height/10), (8 * (width/10)), (8 * (height/10)));
+		int windowWidth = (8 * (width/10));
+		int windowHeight = (8 * (height/10));
+		setBounds((width/10), (height/10), windowWidth, windowHeight);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -143,6 +147,17 @@ public class FracFrame extends JFrame {
 		
 		JButton btnJulia = new JButton("Julia Set");
 		buttonPanel.add(btnJulia);
+		btnJulia.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mode = Fractal.JULIA;
+				julia.setIter(iterSlider.getValue(), windowWidth, windowHeight);
+				contentPane.add(julia, BorderLayout.CENTER);
+				julia.setVisible(true);
+				contentPane.revalidate();
+				contentPane.repaint();
+			}
+		});
 		
 		JButton btnB5 = new JButton("B5");
 		buttonPanel.add(btnB5);
@@ -155,6 +170,7 @@ public class FracFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dragon.setVisible(false);
+				julia.setVisible(false);
 				contentPane.revalidate();
 				contentPane.repaint();
 				
