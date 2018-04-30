@@ -25,6 +25,7 @@ public class FracFrame extends JFrame {
 
 	private JPanel contentPane = new JPanel();
 	private DragonCurve dragon = new DragonCurve();
+	private Fractal mode;
 
 	/**
 	 * Launch the application.
@@ -65,7 +66,7 @@ public class FracFrame extends JFrame {
 		
 		
 		// Slider sets number of iterations to display for fractal
-		JSlider iterSlider = new JSlider(0, 15, 1);
+		JSlider iterSlider = new JSlider(0, 15, 0);
 		contentPane.add(iterSlider, BorderLayout.SOUTH);
 		iterSlider.setMajorTickSpacing(5);
 		iterSlider.setMinorTickSpacing(1);
@@ -77,21 +78,43 @@ public class FracFrame extends JFrame {
 			public void stateChanged(ChangeEvent e) {
 				int val = iterSlider.getValue();
 				
-				dragon.setIter(val);
-				dragon.revalidate();
-				dragon.repaint();
+				// Changes operation depending on which 
+				// fractal is currently being displayed
+				switch (mode) {
+				case DRAGON:
+					dragon.setIter(val);
+					dragon.revalidate();
+					dragon.repaint();
+				
+				}
 				
 				contentPane.revalidate();
 				contentPane.repaint();
 			}
 		});
 		
+		/*
+		 * Checklist for buttons:
+		 * - Change mode
+		 * - Run new fractal's setIter function
+		 * - Add button's fractal to CENTER of BorderLayout
+		 * - Set new fractal's visibility to true
+		 * - Revalidate and repaint
+		 * 
+		 * DO NOT
+		 * - Instantiate new fractals
+		 * - Clear contentPane
+		 */
+		
 		// Dragon Curve button
+		// Use as model for other buttons
 		JButton btnDragon = new JButton("Dragon Curve");
 		buttonPanel.add(btnDragon);
 		btnDragon.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				mode = Fractal.DRAGON;
+				dragon.setIter(iterSlider.getValue());
 				contentPane.add(dragon, BorderLayout.CENTER);
 				dragon.setVisible(true);
 				contentPane.revalidate();
@@ -111,34 +134,18 @@ public class FracFrame extends JFrame {
 		JButton btnB5 = new JButton("B5");
 		buttonPanel.add(btnB5);
 		
+		// On action, this button sets all fractals' visibility to false,
+		// then revalidates and repaints
 		JButton btnClear = new JButton("Clear Panel");
 		buttonPanel.add(btnClear);
 		btnClear.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//int a = contentPane.getComponentCount();
-				//System.out.println(a);
-				clearPane(contentPane);
+				dragon.setVisible(false);
 				contentPane.revalidate();
 				contentPane.repaint();
 				
 			}
 		});
-	}
-	
-	//Recursive function for removing drawn components from JPanel
-	//Used in Clear button
-	public void clearPane(JPanel jp)
-	{
-		int numComps = jp.getComponentCount();
-		if(numComps == 2)
-		{
-			return;
-		} else
-		{
-			jp.remove(2);
-			clearPane(jp);
-		}
-
 	}
 }

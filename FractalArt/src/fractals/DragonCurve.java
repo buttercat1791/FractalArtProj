@@ -13,7 +13,7 @@ public class DragonCurve extends JPanel {
 	
 	private List<Integer> turns;
     private double startingAngle, side;
-    private int iter = 1;
+    private int iter;
  
     public DragonCurve() {
     	turns = getSequence(iter);
