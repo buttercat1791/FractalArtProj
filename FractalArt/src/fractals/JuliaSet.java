@@ -52,6 +52,7 @@ public class JuliaSet extends JPanel
     	 * This code taken from https://rosettacode.org/wiki/Julia_set#Java 
     	 * and changed to use complex numbers
     	 */
+    	int maxIter = iter*10;
         for (int x = 0; x < width; x++) 
         {
             for (int y = 0; y < height; y++) 
@@ -59,7 +60,7 @@ public class JuliaSet extends JPanel
                 ComplexNumbers v = new ComplexNumbers(
                 		(1.5 * (x - width / 2) / (0.5 * width)),
                 		((y - height / 2) / (0.5 * height)));
-                float i = iter*10;
+                float i = maxIter;
                 while (v.norm() < 4 && i > 0) 
                 {
                     v = new ComplexNumbers(
@@ -68,7 +69,7 @@ public class JuliaSet extends JPanel
                     
                     i--;
                 }
-                int col = Color.HSBtoRGB((iter*10 / i) % 1, 1, i > 0 ? 1 : 0);
+                int col = Color.HSBtoRGB((maxIter / i) % 1, 1, i > 0 ? 1 : 0);
                 image.setRGB(x, y, col);
         //End of taken code
 

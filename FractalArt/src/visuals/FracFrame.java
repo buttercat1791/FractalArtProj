@@ -30,7 +30,7 @@ public class FracFrame extends JFrame {
 	private SierpinskiTriangle sierpinski = new SierpinskiTriangle();
 	private JuliaSet julia = new JuliaSet();
 	
-	private Fractal mode;
+	private Fractal mode = Fractal.CLEAR;
 
 	/**
 	 * Launch the application.
@@ -65,7 +65,7 @@ public class FracFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-
+		
 		
 		JPanel buttonPanel = new JPanel();
 		contentPane.add(buttonPanel, BorderLayout.NORTH);
@@ -87,6 +87,8 @@ public class FracFrame extends JFrame {
 				// Changes operation depending on which 
 				// fractal is currently being displayed
 				switch (mode) {
+				case CLEAR:
+					break;
 				case DRAGON:
 					dragon.setIter(val);
 					dragon.revalidate();
@@ -175,12 +177,18 @@ public class FracFrame extends JFrame {
 		btnClear.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dragon.setVisible(false);
-				julia.setVisible(false);
+				mode = Fractal.CLEAR;
+				clear();
 				contentPane.revalidate();
 				contentPane.repaint();
 				
 			}
 		});
 	}
+	
+	public void clear() {
+		dragon.setVisible(false);
+		julia.setVisible(false);
+	}
+	
 }
