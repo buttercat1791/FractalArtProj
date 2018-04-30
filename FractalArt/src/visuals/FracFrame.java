@@ -91,6 +91,12 @@ public class FracFrame extends JFrame {
 					dragon.setIter(val);
 					dragon.revalidate();
 					dragon.repaint();
+					break;
+				case JULIA:
+					julia.setIter(val, windowWidth, windowHeight);
+					julia.revalidate();
+					julia.repaint();
+					break;
 				
 				}
 				contentPane.revalidate();
