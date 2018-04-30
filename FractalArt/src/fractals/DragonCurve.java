@@ -13,14 +13,11 @@ public class DragonCurve extends JPanel {
 	
 	private List<Integer> turns;
     private double startingAngle, side;
-    private int iter = 5;
+    private int iter = 1;
  
-    public DragonCurve(int iterNum) {
-    	double size = 0;	// Value scales image size based on JPanel size
-    	iter = iterNum;
-        turns = getSequence(iter);
+    public DragonCurve() {
+    	turns = getSequence(iter);
         startingAngle = -iter * (Math.PI / 4);
-        System.out.println(iter);
     }
  
     public List<Integer> getSequence(int iterations) {
@@ -36,8 +33,11 @@ public class DragonCurve extends JPanel {
         return turnSequence;
     }
     
+    // Reruns constructor function code to refresh the image
     public void setIter(int newIter) {
-    	this.iter = newIter;
+    	iter = newIter;
+    	turns = getSequence(iter);
+        startingAngle = -iter * (Math.PI / 4);
     }
  
     @Override

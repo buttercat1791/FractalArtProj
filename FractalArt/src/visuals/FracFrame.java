@@ -11,7 +11,6 @@ import javax.swing.event.ChangeListener;
 
 import fractals.*;
 
-import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -25,6 +24,7 @@ import javax.swing.WindowConstants;
 public class FracFrame extends JFrame {
 
 	private JPanel contentPane = new JPanel();
+	private DragonCurve dragon = new DragonCurve();
 
 	/**
 	 * Launch the application.
@@ -76,10 +76,13 @@ public class FracFrame extends JFrame {
 			// Change in slider changes iteration values for all fractals
 			public void stateChanged(ChangeEvent e) {
 				int val = iterSlider.getValue();
-				clearPane(contentPane);	
+				
+				dragon.setIter(val);
+				dragon.revalidate();
+				dragon.repaint();
+				
 				contentPane.revalidate();
 				contentPane.repaint();
-				System.out.println(contentPane.getComponentOrientation().toString());
 			}
 		});
 		
@@ -89,7 +92,6 @@ public class FracFrame extends JFrame {
 		btnDragon.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				DragonCurve dragon = new DragonCurve(iterSlider.getValue());
 				contentPane.add(dragon, BorderLayout.CENTER);
 				dragon.setVisible(true);
 				contentPane.revalidate();
