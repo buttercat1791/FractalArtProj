@@ -127,6 +127,7 @@ public class FracFrame extends JFrame {
 		btnDragon.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				clear();
 				mode = Fractal.DRAGON;
 				dragon.setIter(iterSlider.getValue());
 				contentPane.add(dragon, BorderLayout.CENTER);
@@ -138,13 +139,14 @@ public class FracFrame extends JFrame {
 		
 		JButton btnSierpinski = new JButton("Sierpinski Triangle");
 		buttonPanel.add(btnSierpinski);
-		btnDragon.addActionListener(new ActionListener() {
+		btnSierpinski.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				clear();
 				mode = Fractal.SIERPINSKI;
 				sierpinski.setIter(iterSlider.getValue());
 				contentPane.add(sierpinski, BorderLayout.CENTER);
-				dragon.setVisible(true);
+				sierpinski.setVisible(true);
 				contentPane.revalidate();
 				contentPane.repaint();
 			}
@@ -158,6 +160,7 @@ public class FracFrame extends JFrame {
 		btnJulia.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				clear();
 				mode = Fractal.JULIA;
 				julia.setIter(iterSlider.getValue(), windowWidth, windowHeight);
 				contentPane.add(julia, BorderLayout.CENTER);
@@ -186,8 +189,10 @@ public class FracFrame extends JFrame {
 		});
 	}
 	
+	//Called when buttons are hit
 	public void clear() {
 		dragon.setVisible(false);
+		sierpinski.setVisible(false);
 		julia.setVisible(false);
 	}
 	

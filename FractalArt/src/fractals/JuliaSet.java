@@ -81,27 +81,3 @@ public class JuliaSet extends JPanel
     
 }
 
-/*
-for(int x = 0; x < width; x++)
-{
-	for(int y = 0; y < height; y++)
-	{
-		ComplexNumbers v = new ComplexNumbers(x - width, y-height);
-		for(int i = 0; i < iter; i++){
-		    v = v.multiply(v).add(c);
-		}
-		double vN = v.norm();
-		if(vN <= iter*1000) image.setRGB(x, y, 0xFF00000);
-		else if(vN <= iter*2000 ) image.setRGB(x,  y,  0xFF00FF00);
-		else if(vN <= iter*3000 ) image.setRGB(x,  y,  0x045A6F);
-		else if(vN <= iter*4000 ) image.setRGB(x,  y,  0xFF35EA);
-		else if(vN <= iter*5000 ) image.setRGB(x,  y,  0xFBFF01);
-		else if(vN <= iter*6000 ) image.setRGB(x,  y,  0xFF355D);
-		else if(vN <= iter*7000 ) image.setRGB(x,  y,  0x0317DB);
-		else if(vN <= iter*8000 ) image.setRGB(x,  y,  0x6DC183);
-		else if(vN <= iter*9000 ) image.setRGB(x,  y,  0x60586C);
-		else if(vN <= iter*200000 ) image.setRGB(x,  y,  0xFE0AF3);
-		else image.setRGB(x, y, 0xFFFFFFFF);
-	    }
-	}
-*/
