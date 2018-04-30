@@ -24,7 +24,10 @@ import javax.swing.WindowConstants;
 public class FracFrame extends JFrame {
 
 	private JPanel contentPane = new JPanel();
+	
 	private DragonCurve dragon = new DragonCurve();
+	private SierpinskiTriangle sierpinski = new SierpinskiTriangle();
+	
 	private Fractal mode;
 
 	/**
@@ -77,7 +80,6 @@ public class FracFrame extends JFrame {
 			// Change in slider changes iteration values for all fractals
 			public void stateChanged(ChangeEvent e) {
 				int val = iterSlider.getValue();
-				
 				// Changes operation depending on which 
 				// fractal is currently being displayed
 				switch (mode) {
@@ -87,16 +89,16 @@ public class FracFrame extends JFrame {
 					dragon.repaint();
 				
 				}
-				
 				contentPane.revalidate();
 				contentPane.repaint();
 			}
 		});
 		
+		
 		/*
 		 * Checklist for buttons:
 		 * - Change mode
-		 * - Run new fractal's setIter function
+		 * - Run new fractal's setIter function using value from slider
 		 * - Add button's fractal to CENTER of BorderLayout
 		 * - Set new fractal's visibility to true
 		 * - Revalidate and repaint
@@ -124,6 +126,17 @@ public class FracFrame extends JFrame {
 		
 		JButton btnSierpinski = new JButton("Sierpinski Triangle");
 		buttonPanel.add(btnSierpinski);
+		btnDragon.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mode = Fractal.SIERPINSKI;
+				sierpinski.setIter(iterSlider.getValue());
+				contentPane.add(sierpinski, BorderLayout.CENTER);
+				dragon.setVisible(true);
+				contentPane.revalidate();
+				contentPane.repaint();
+			}
+		});
 		
 		JButton btnMandelbrot = new JButton("Mandelbrot Set");
 		buttonPanel.add(btnMandelbrot);
