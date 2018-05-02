@@ -109,6 +109,7 @@ public class FracFrame extends JFrame {
 		
 		/*
 		 * Checklist for buttons:
+		 * - Run clear()
 		 * - Change mode
 		 * - Run new fractal's setIter function using value from slider
 		 * - Add button's fractal to CENTER of BorderLayout
@@ -183,8 +184,7 @@ public class FracFrame extends JFrame {
 				mode = Fractal.CLEAR;
 				clear();
 				contentPane.revalidate();
-				contentPane.repaint();
-				
+				contentPane.repaint();	
 			}
 		});
 	}

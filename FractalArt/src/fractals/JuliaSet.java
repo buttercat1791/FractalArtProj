@@ -18,18 +18,14 @@ public class JuliaSet extends JPanel
 	 * Constructor
 	 * W and H have to be fed in as this uses a BufferedImage
 	 */
-	public JuliaSet()
-	{
-		width = 100;
-		height = 100;
-	}
+	public JuliaSet() {}
 	
     // Reruns constructor function code to refresh the image
     public void setIter(int newIter, int w, int h) 
     {
     	iter = newIter + 1;
-    	this.width = w;
-    	this.height = h;
+    	//this.width = w;
+    	//this.height = h;
     }
     
     //Overrides the paintComponent
@@ -40,9 +36,11 @@ public class JuliaSet extends JPanel
     	g.drawImage(img, 0, 0, this);
     }
     
-    //
     public BufferedImage buildJulia(int type)
     {
+    	width = getWidth();
+    	height = getHeight();
+    	
     	ComplexNumbers c = new ComplexNumbers(-0.7, 0.27015);
     	BufferedImage image = new BufferedImage(width, height, type);
     	
