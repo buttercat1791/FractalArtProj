@@ -21,11 +21,9 @@ public class JuliaSet extends JPanel
 	public JuliaSet() {}
 	
     // Reruns constructor function code to refresh the image
-    public void setIter(int newIter, int w, int h) 
+    public void setIter(int newIter) 
     {
     	iter = newIter + 1;
-    	//this.width = w;
-    	//this.height = h;
     }
     
     //Overrides the paintComponent

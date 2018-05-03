@@ -94,12 +94,16 @@ public class FracFrame extends JFrame {
 					dragon.revalidate();
 					dragon.repaint();
 					break;
+				case SIERPINSKI:
+					sierpinski.setIter(val);
+					sierpinski.revalidate();
+					sierpinski.repaint();
+					break;
 				case JULIA:
-					julia.setIter(val, windowWidth, windowHeight);
+					julia.setIter(val);
 					julia.revalidate();
 					julia.repaint();
 					break;
-				
 				}
 				contentPane.revalidate();
 				contentPane.repaint();
@@ -163,7 +167,7 @@ public class FracFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				clear();
 				mode = Fractal.JULIA;
-				julia.setIter(iterSlider.getValue(), windowWidth, windowHeight);
+				julia.setIter(iterSlider.getValue());
 				contentPane.add(julia, BorderLayout.CENTER);
 				julia.setVisible(true);
 				contentPane.revalidate();
