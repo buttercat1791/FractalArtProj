@@ -45,11 +45,11 @@ public class DragonCurve extends JPanel {
     	int width = this.getWidth();
     	int height = this.getHeight();
     	if (width > height) {
-    		side = (height / 1.5) / Math.pow(2, iter / 2.);
+    		side = (height/2) / (Math.pow(1.3411, iter*1.));
     	} else if (width < height) {
-    		side = (width / 1.5) / Math.pow(2, iter / 2.);
+    		side =  (width/2) / (Math.pow(1.3411, iter*1.));
     	}
-        g.setColor(Color.BLACK);
+        g.setColor(Color.CYAN);
         double angle = startingAngle;
         int x1 = width/3, y1 = (int)(height/1.5);
         int x2 = x1 + (int) (Math.cos(angle) * side);
@@ -58,6 +58,14 @@ public class DragonCurve extends JPanel {
         x1 = x2;
         y1 = y2;
         for (Integer turn : turns) {
+        	
+        	//Random color
+        	int R = (int) (Math.random( )*256);
+        	int G = (int)(Math.random( )*256);
+        	int B= (int)(Math.random( )*256);
+        	Color randomColor = new Color(R, G, B);
+        	g.setColor(randomColor);
+        	
             angle += turn * (Math.PI / 2);
             x2 = x1 + (int) (Math.cos(angle) * side);
             y2 = y1 + (int) (Math.sin(angle) * side);

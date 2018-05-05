@@ -16,8 +16,11 @@ public class JuliaSet extends JPanel
 	
 	BufferedImage img;
 	
-	private Hashtable<String, BufferedImage> imgTable = new Hashtable();
-	private Hashtable<String, Dimension> dimTable = new Hashtable();
+	//private Hashtable<Dimension, BufferedImage> imgTable = new Hashtable();
+	//private Hashtable<String, Dimension> dimTable = new Hashtable();
+	private Hashtable<Integer, Dimension> iTable = new Hashtable();
+	private Hashtable<Dimension, BufferedImage> imgTable = new Hashtable();
+
 	
 	/* 
 	 * Constructor
@@ -46,18 +49,31 @@ public class JuliaSet extends JPanel
     	width = getWidth();
     	height = getHeight();
     	
-    	//Dimension dim = new Dimension(width, height);
+    	Dimension dim = new Dimension(width, height);
     	
     	ComplexNumbers c = new ComplexNumbers(-0.7, 0.27015);
     	BufferedImage image = new BufferedImage(width, height, type);
     	
+    	
+    	//If image for right iteration + dimension is in table
+    	if(iTable.get(iter) == dim)
+    	{
+    		image = imgTable.get(iTable.get(iter));
+    	}
+    	else 
+    	{
+    		image = buildImage(image);
+    		imgTable.put(dim, image);
+    		iTable.put(iter, dim);
+    	}
+    	
     	// Check the Hashtable to see if the image has already been created in the
     	// dimensions required.  If it has, use it.  If it hasn't, create a new image.
-    	if (imgTable.containsKey(Integer.toString(iter)) /*&& dimTable.contains(Integer.toString(iter))*/) {
+    	/* if  (imgTable.containsKey(Integer.toString(iter)) && dimTable.contains(Integer.toString(iter))) {
     		image = imgTable.get(Integer.toString(iter));
     		
     		/**
-    		// If both Hashtable contain the key, make sure the image associate with that key is the
+    		// If both Hashtables contain the key, make sure the image associate with that key is the
     		// right size.  If it isn't, make the image from scratch.
     		// TODO: This block seems ineffective, with it in place, images don't load any faster.
     		if (new Dimension(width, height) == dimTable.get(Integer.toString(iter))) {
@@ -68,15 +84,18 @@ public class JuliaSet extends JPanel
     	        dimTable.put(Integer.toString(iter), new Dimension(width, height));
     		}
     		*/
-    	} else {
+    	/*} else {
 	    	image = buildImage(image);
 	        imgTable.put(Integer.toString(iter), image);
 	        //dimTable.put(Integer.toString(iter), new Dimension(width, height));
-    	}
+    	} */
+    	System.out.println(iTable.toString());
+    	System.out.println("imgTable: ");
+    	System.out.println(imgTable.toString());
     	return image;
     }
     
-    //Build image by looping through each pixel and masking it
+    //Build image by looping through each pixel and coloring
 	/*
 	 * This code taken from https://rosettacode.org/wiki/Julia_set#Java 
 	 * and changed to use complex numbers
