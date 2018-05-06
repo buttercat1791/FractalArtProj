@@ -116,7 +116,7 @@ public class FracFrame extends JFrame {
 		
 		//This part used for building hashtables of images
 		int imgHeight = windowHeight - iterSlider.getHeight() - buttonPanel.getHeight();
-		//mandelbrot.buildImageTable(windowWidth, imgHeight);
+
 
 		/*
 		 * Checklist for buttons:

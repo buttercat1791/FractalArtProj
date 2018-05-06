@@ -36,7 +36,7 @@ public class MandelbrotSet extends JPanel
 			public void run() {
 				for(int i = 1; i <= 16; i++) {
 			    	img = buildMandelbrot(BufferedImage.TYPE_INT_ARGB);
-			    	imgTable.put(i, img);
+			    	imgTable.put(Integer.toString(i), img);
 
 				}
 			}
@@ -44,7 +44,8 @@ public class MandelbrotSet extends JPanel
 		Thread thread = new Thread(runnable);
 		thread.start();
 
-	} */
+	} 
+	*/
 	
     // Sets iteration number
     public void setIter(int newIter) 
@@ -56,19 +57,13 @@ public class MandelbrotSet extends JPanel
     @Override
     public void paintComponent(Graphics g)
     {
-
-
-    	//img = imgTable.get(iter);
     	if(imgTable.containsKey(Integer.toString(iter))) {
     		img = imgTable.get(Integer.toString(iter));
-    		System.out.println("Contained");
     	} else {
     		img = buildMandelbrot(BufferedImage.TYPE_INT_ARGB);
     		imgTable.put(Integer.toString(iter), img);
-    		System.out.println("Put");
     	}
     	g.drawImage(img, 0, 0, this);
-    	System.out.println(imgTable);
     }
     
     
