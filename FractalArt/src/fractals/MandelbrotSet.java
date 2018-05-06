@@ -54,7 +54,7 @@ public class MandelbrotSet extends JPanel
     	height = getHeight();
     	//Base code from https://github.com/joni/fractals/blob/master/mandelbrot/MandelbrotColor.java
     	//Modified for this project
-    	int max = iter*15;
+    	int max = iter*2;
     	int black = 0;
         int[] colors = new int[max];
         for (int i = 0; i<max; i++) {
@@ -73,7 +73,6 @@ public class MandelbrotSet extends JPanel
                     double x_new = (x*x)-(y*y)+c_re;
                     y = (2*x*y)+c_im;
                     x = x_new;
-                   // System.out.println(x*x+y*y);
                     iteration++;
                 } 
                 if (iteration < max) img.setRGB(col, row, colors[iteration]);
@@ -82,24 +81,6 @@ public class MandelbrotSet extends JPanel
         }
     	
     	
-    	/*
-   	 	ComplexNumbers v = new ComplexNumbers(1.5, .25);
-
-        for (int y = 0; y < height; y++) 
-        {
-            for (int x = 0; x < width; x++) {
-
-                int i = iter*15;
-                while (v.norm() < 4 && iter > 0) {
-                    v = v.multiply(v).add(v);
-                    System.out.println(v);
-                    i--;
-                }
-                img.setRGB(x, y, i | (i << 8));
-            }
-           
-        }
-            	 */
         
     }
 		return img;
