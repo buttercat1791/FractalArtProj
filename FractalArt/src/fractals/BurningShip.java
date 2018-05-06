@@ -29,7 +29,7 @@ public class BurningShip extends JPanel {
 	}
 	
 	public void setIter(int newIter) {
-		iter = newIter + 3;
+		iter = newIter + 1;
 	}
 	
 	// zn+1 = (|Re(zn) | + i|Im(zn)|)^2 + c, z0 = 0
