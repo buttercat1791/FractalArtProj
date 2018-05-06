@@ -47,8 +47,8 @@ public class BurningShip extends JPanel {
 			
 			for (int y = 0; y < height; y++) {
 				for (int x = 0; x < width; x++) {
-					double cRe = -2.5 + x * (4 / width);
-					double cIm = -2 + y * (3 / height);
+					double cRe = (x - 2 * (width / 3.25)) * (5.0 / width);
+					double cIm = (y - width / 2.5) * (5.0 / width);
 					
 					ComplexNumbers z = new ComplexNumbers(0, 0);
 					
@@ -56,10 +56,11 @@ public class BurningShip extends JPanel {
 					
 					// Implement iteration:
 					// zn+1 = (|Re(zn)| + i|Im(zn)|)^2 + c
-					while (z.norm() < 2 && iteration < maxIter) {
+					while (z.norm() < 4 && iteration < maxIter) {
 						z = new ComplexNumbers(z.x * z.x - z.y * z.y,
-											   2 * Math.abs(z.x * z.y));
+											   Math.abs(z.x * z.y) + Math.abs(z.x * z.y));
 						z = new ComplexNumbers(z.x + cRe, z.y + cIm);
+						iteration++;
 					}
 					
 					if (iteration < maxIter)
