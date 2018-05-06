@@ -32,8 +32,6 @@ public class FracFrame extends JFrame {
 	private BurningShip ship = new BurningShip();
 	private MandelbrotSet mandelbrot = new MandelbrotSet();
 	
-
-	
 	private Fractal mode = Fractal.CLEAR;
 
 	/**
@@ -214,6 +212,7 @@ public class FracFrame extends JFrame {
 				iterSlider.setValue(0);
 				mode = Fractal.SHIP;
 				contentPane.add(ship, BorderLayout.CENTER);
+				//ship.buildImgTable();
 				ship.setVisible(true);
 				contentPane.revalidate();
 				contentPane.repaint();
