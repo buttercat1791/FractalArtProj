@@ -17,7 +17,7 @@ public class MandelbrotSet extends JPanel
 	
 	BufferedImage img;
 	
-	private Hashtable<Integer, BufferedImage> imgTable = new Hashtable<Integer, BufferedImage>();
+	Hashtable<Integer, BufferedImage> imgTable = new Hashtable<Integer, BufferedImage>();
 	
 	/* 
 	 * Constructor makes itself, gives width and height
@@ -25,6 +25,7 @@ public class MandelbrotSet extends JPanel
 	public MandelbrotSet() 
 	{}
 	
+	//Builds a hashtable of the images for fractals
 	public void buildImageTable(int w, int h) 
 	{
 		Runnable runnable = new Runnable() 
@@ -56,8 +57,9 @@ public class MandelbrotSet extends JPanel
     	System.out.println(iter);
     	System.out.println(imgTable.get(iter));
     	img = imgTable.get(iter);
-    	System.out.println(imgTable);
+
     	g.drawImage(img, 0, 0, this);
+    	System.out.println(imgTable);
     }
     
     
