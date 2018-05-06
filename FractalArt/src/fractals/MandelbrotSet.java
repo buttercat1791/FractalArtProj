@@ -50,8 +50,6 @@ public class MandelbrotSet extends JPanel
     public BufferedImage buildImage(BufferedImage img)
     {
     	
-    	width = getWidth();
-    	height = getHeight();
     	//Base code from https://github.com/joni/fractals/blob/master/mandelbrot/MandelbrotColor.java
     	//Modified for this project
     	int max = iter*2;

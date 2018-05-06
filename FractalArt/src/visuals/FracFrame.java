@@ -145,6 +145,7 @@ public class FracFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				clear();
+				iterSlider.setValue(0);
 				mode = Fractal.DRAGON;
 				dragon.setIter(iterSlider.getValue());
 				contentPane.add(dragon, BorderLayout.CENTER);
@@ -160,6 +161,7 @@ public class FracFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				clear();
+				iterSlider.setValue(0);
 				mode = Fractal.SIERPINSKI;
 				sierpinski.setIter(iterSlider.getValue());
 				contentPane.add(sierpinski, BorderLayout.CENTER);
@@ -175,6 +177,7 @@ public class FracFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				clear();
+				iterSlider.setValue(0);
 				mode = Fractal.MANDELBROT;
 				mandelbrot.setIter(iterSlider.getValue());
 				contentPane.add(mandelbrot, BorderLayout.CENTER);
@@ -190,6 +193,7 @@ public class FracFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				clear();
+				iterSlider.setValue(0);
 				mode = Fractal.JULIA;
 				julia.setIter(iterSlider.getValue());
 				contentPane.add(julia, BorderLayout.CENTER);
@@ -205,6 +209,7 @@ public class FracFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				clear();
+				iterSlider.setValue(0);
 				mode = Fractal.SHIP;
 				ship.setIter(iterSlider.getValue());
 				contentPane.add(ship, BorderLayout.CENTER);
@@ -223,6 +228,7 @@ public class FracFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				mode = Fractal.CLEAR;
 				clear();
+				iterSlider.setValue(0);
 				contentPane.revalidate();
 				contentPane.repaint();	
 			}
