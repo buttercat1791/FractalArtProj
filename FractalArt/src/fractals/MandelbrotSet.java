@@ -26,7 +26,7 @@ public class MandelbrotSet extends JPanel
 	{}
 	
 	//Builds a hashtable of the images for fractals
-	public void buildImageTable(int w, int h) 
+	public void buildImageTable() 
 	{
 		Runnable runnable = new Runnable() 
 		{
@@ -34,7 +34,7 @@ public class MandelbrotSet extends JPanel
 			@Override
 			public void run() {
 				for(int i = 1; i <= 16; i++) {
-			    	img = buildMandelbrot(BufferedImage.TYPE_INT_ARGB, w, h);
+			    	img = buildMandelbrot(BufferedImage.TYPE_INT_ARGB);
 			    	imgTable.put(i, img);
 
 				}
@@ -42,7 +42,8 @@ public class MandelbrotSet extends JPanel
 		};
 		Thread thread = new Thread(runnable);
 		thread.start();
-	}
+
+	} 
 	
     // Sets iteration number
     public void setIter(int newIter) 
@@ -54,26 +55,33 @@ public class MandelbrotSet extends JPanel
     @Override
     public void paintComponent(Graphics g)
     {
-    	System.out.println(iter);
-    	System.out.println(imgTable.get(iter));
-    	img = imgTable.get(iter);
 
+
+    	//img = imgTable.get(iter);
+    	if(imgTable.contains(iter)) {
+    		img = imgTable.get(iter);
+    	} else {
+    		img = buildMandelbrot(BufferedImage.TYPE_INT_ARGB);
+    		imgTable.put(iter, img);
+    	}
     	g.drawImage(img, 0, 0, this);
     	System.out.println(imgTable);
     }
     
     
-    public BufferedImage buildMandelbrot(int type, int width, int height)
+    public BufferedImage buildMandelbrot(int type)
     {
-    	BufferedImage image = new BufferedImage(width, height, type);
-    	image = buildImage(image);
+    	int w = getWidth();
+    	int h = getHeight();
+    	BufferedImage image = new BufferedImage(w, h, type);
+    	image = buildImage(image, w, h);
     	return image;
     	
     }
     
-    public BufferedImage buildImage(BufferedImage img)
+    public BufferedImage buildImage(BufferedImage img, int width, int height)
     {
-    	
+
     	//Base code from https://github.com/joni/fractals/blob/master/mandelbrot/MandelbrotColor.java
     	//Modified for this project
     	int max = iter*2;

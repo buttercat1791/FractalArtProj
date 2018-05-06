@@ -32,6 +32,8 @@ public class FracFrame extends JFrame {
 	private BurningShip ship = new BurningShip();
 	private MandelbrotSet mandelbrot = new MandelbrotSet();
 	
+
+	
 	private Fractal mode = Fractal.CLEAR;
 
 	/**
@@ -125,7 +127,7 @@ public class FracFrame extends JFrame {
 		
 		//This part used for building hashtables of images
 		int imgHeight = windowHeight - iterSlider.getHeight() - buttonPanel.getHeight();
-		mandelbrot.buildImageTable(windowWidth, imgHeight);
+		//mandelbrot.buildImageTable(windowWidth, imgHeight);
 
 		/*
 		 * Checklist for buttons:
@@ -151,6 +153,7 @@ public class FracFrame extends JFrame {
 				clear();
 				iterSlider.setValue(0);
 				mode = Fractal.DRAGON;
+				dragon.setIter(iterSlider.getValue());
 				contentPane.add(dragon, BorderLayout.CENTER);
 				dragon.setVisible(true);
 				contentPane.revalidate();
@@ -166,6 +169,7 @@ public class FracFrame extends JFrame {
 				clear();
 				iterSlider.setValue(0);
 				mode = Fractal.SIERPINSKI;
+				sierpinski.setIter(iterSlider.getValue());
 				contentPane.add(sierpinski, BorderLayout.CENTER);
 				sierpinski.setVisible(true);
 				contentPane.revalidate();
@@ -181,6 +185,7 @@ public class FracFrame extends JFrame {
 				clear();
 				iterSlider.setValue(0);
 				mode = Fractal.MANDELBROT;
+				mandelbrot.setIter(iterSlider.getValue());
 				contentPane.add(mandelbrot, BorderLayout.CENTER);
 				mandelbrot.setVisible(true);
 				contentPane.revalidate();
@@ -196,6 +201,7 @@ public class FracFrame extends JFrame {
 				clear();
 				iterSlider.setValue(0);
 				mode = Fractal.JULIA;
+				julia.setIter(iterSlider.getValue());
 				contentPane.add(julia, BorderLayout.CENTER);
 				julia.setVisible(true);
 				contentPane.revalidate();
@@ -211,8 +217,8 @@ public class FracFrame extends JFrame {
 				clear();
 				iterSlider.setValue(0);
 				mode = Fractal.SHIP;
+				ship.setIter(iterSlider.getValue());
 				contentPane.add(ship, BorderLayout.CENTER);
-				//ship.buildImgTable();
 				ship.setVisible(true);
 				contentPane.revalidate();
 				contentPane.repaint();
