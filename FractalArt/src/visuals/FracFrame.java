@@ -29,6 +29,7 @@ public class FracFrame extends JFrame {
 	private DragonCurve dragon = new DragonCurve();
 	private SierpinskiTriangle sierpinski = new SierpinskiTriangle();
 	private JuliaSet julia = new JuliaSet();
+	private BurningShip ship = new BurningShip();
 	
 	private Fractal mode = Fractal.CLEAR;
 
@@ -104,6 +105,11 @@ public class FracFrame extends JFrame {
 					julia.revalidate();
 					julia.repaint();
 					break;
+				case SHIP:
+					ship.setIter(val);
+					ship.revalidate();
+					ship.repaint();
+					break;
 				}
 				contentPane.revalidate();
 				contentPane.repaint();
@@ -175,8 +181,20 @@ public class FracFrame extends JFrame {
 			}
 		});
 		
-		JButton btnB5 = new JButton("B5");
-		buttonPanel.add(btnB5);
+		JButton btnShip = new JButton("Burning Ship");
+		buttonPanel.add(btnShip);
+		btnShip.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				clear();
+				mode = Fractal.SHIP;
+				ship.setIter(iterSlider.getValue());
+				contentPane.add(ship, BorderLayout.CENTER);
+				ship.setVisible(true);
+				contentPane.revalidate();
+				contentPane.repaint();
+			}
+		});
 		
 		// On action, this button sets all fractals' visibility to false,
 		// then revalidates and repaints
@@ -198,6 +216,7 @@ public class FracFrame extends JFrame {
 		dragon.setVisible(false);
 		sierpinski.setVisible(false);
 		julia.setVisible(false);
+		ship.setVisible(false);
 	}
 	
 }

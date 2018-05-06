@@ -21,11 +21,6 @@ public class JuliaSet extends JPanel
 	private Hashtable<Integer, Dimension> iTable = new Hashtable();
 	private Hashtable<Dimension, BufferedImage> imgTable = new Hashtable();
 
-	
-	/* 
-	 * Constructor
-	 * W and H have to be fed in as this uses a BufferedImage
-	 */
 	public JuliaSet() {}
 	
     // Reruns constructor function code to refresh the image
@@ -51,7 +46,8 @@ public class JuliaSet extends JPanel
     	
     	Dimension dim = new Dimension(width, height);
     	
-    	ComplexNumbers c = new ComplexNumbers(-0.7, 0.27015);
+    	// c is never used
+    	//ComplexNumbers c = new ComplexNumbers(-0.7, 0.27015);
     	BufferedImage image = new BufferedImage(width, height, type);
     	
     	

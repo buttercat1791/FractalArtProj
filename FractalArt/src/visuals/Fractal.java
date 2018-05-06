@@ -5,5 +5,5 @@ package visuals;
  * in FracFrame's BorderLayout
  */
 public enum Fractal {
-	DRAGON, SIERPINSKI, MANDELBROT, JULIA, CLEAR
+	DRAGON, SIERPINSKI, MANDELBROT, JULIA, CLEAR, SHIP
 }
