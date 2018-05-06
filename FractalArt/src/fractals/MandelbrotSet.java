@@ -59,7 +59,7 @@ public class MandelbrotSet extends JPanel
 
 
     	//img = imgTable.get(iter);
-    	if(imgTable.contains(Integer.toString(iter))) {
+    	if(imgTable.containsKey(Integer.toString(iter))) {
     		img = imgTable.get(Integer.toString(iter));
     		System.out.println("Contained");
     	} else {
