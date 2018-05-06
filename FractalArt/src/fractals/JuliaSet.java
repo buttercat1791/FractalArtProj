@@ -85,9 +85,6 @@ public class JuliaSet extends JPanel
 	        imgTable.put(Integer.toString(iter), image);
 	        //dimTable.put(Integer.toString(iter), new Dimension(width, height));
     	} */
-    	System.out.println(iTable.toString());
-    	System.out.println("imgTable: ");
-    	System.out.println(imgTable.toString());
     	return image;
     }
     

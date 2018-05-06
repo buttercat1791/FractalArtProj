@@ -30,6 +30,7 @@ public class FracFrame extends JFrame {
 	private SierpinskiTriangle sierpinski = new SierpinskiTriangle();
 	private JuliaSet julia = new JuliaSet();
 	private BurningShip ship = new BurningShip();
+	private MandelbrotSet mandelbrot = new MandelbrotSet();
 	
 	private Fractal mode = Fractal.CLEAR;
 
@@ -110,6 +111,11 @@ public class FracFrame extends JFrame {
 					ship.revalidate();
 					ship.repaint();
 					break;
+				case MANDELBROT:
+					mandelbrot.setIter(val);
+					mandelbrot.revalidate();
+					mandelbrot.repaint();
+					break;
 				}
 				contentPane.revalidate();
 				contentPane.repaint();
@@ -139,6 +145,7 @@ public class FracFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				clear();
+				iterSlider.setValue(0);
 				mode = Fractal.DRAGON;
 				dragon.setIter(iterSlider.getValue());
 				contentPane.add(dragon, BorderLayout.CENTER);
@@ -154,6 +161,7 @@ public class FracFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				clear();
+				iterSlider.setValue(0);
 				mode = Fractal.SIERPINSKI;
 				sierpinski.setIter(iterSlider.getValue());
 				contentPane.add(sierpinski, BorderLayout.CENTER);
@@ -165,6 +173,19 @@ public class FracFrame extends JFrame {
 		
 		JButton btnMandelbrot = new JButton("Mandelbrot Set");
 		buttonPanel.add(btnMandelbrot);
+		btnMandelbrot.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				clear();
+				iterSlider.setValue(0);
+				mode = Fractal.MANDELBROT;
+				mandelbrot.setIter(iterSlider.getValue());
+				contentPane.add(mandelbrot, BorderLayout.CENTER);
+				mandelbrot.setVisible(true);
+				contentPane.revalidate();
+				contentPane.repaint();
+			}
+		});
 		
 		JButton btnJulia = new JButton("Julia Set");
 		buttonPanel.add(btnJulia);
@@ -172,6 +193,7 @@ public class FracFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				clear();
+				iterSlider.setValue(0);
 				mode = Fractal.JULIA;
 				julia.setIter(iterSlider.getValue());
 				contentPane.add(julia, BorderLayout.CENTER);
@@ -187,6 +209,7 @@ public class FracFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				clear();
+				iterSlider.setValue(0);
 				mode = Fractal.SHIP;
 				ship.setIter(iterSlider.getValue());
 				contentPane.add(ship, BorderLayout.CENTER);
@@ -205,6 +228,7 @@ public class FracFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				mode = Fractal.CLEAR;
 				clear();
+				iterSlider.setValue(0);
 				contentPane.revalidate();
 				contentPane.repaint();	
 			}
@@ -216,7 +240,8 @@ public class FracFrame extends JFrame {
 		dragon.setVisible(false);
 		sierpinski.setVisible(false);
 		julia.setVisible(false);
+		mandelbrot.setVisible(false);
 		ship.setVisible(false);
 	}
-	
 }
+	
