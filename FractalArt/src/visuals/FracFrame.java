@@ -32,6 +32,8 @@ public class FracFrame extends JFrame {
 	private BurningShip ship = new BurningShip();
 	private MandelbrotSet mandelbrot = new MandelbrotSet();
 	
+
+	
 	private Fractal mode = Fractal.CLEAR;
 
 	/**
@@ -57,6 +59,7 @@ public class FracFrame extends JFrame {
 	public FracFrame() {
 
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		setResizable(false);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int width = (int)screenSize.getWidth();
 		int height = (int)screenSize.getHeight();
@@ -122,7 +125,10 @@ public class FracFrame extends JFrame {
 			}
 		});
 		
-		
+		//This part used for building hashtables of images
+		int imgHeight = height - iterSlider.getHeight() - buttonPanel.getHeight();
+		mandelbrot.buildImageTable(width, imgHeight);
+
 		/*
 		 * Checklist for buttons:
 		 * - Run clear()

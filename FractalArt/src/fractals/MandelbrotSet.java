@@ -5,9 +5,11 @@ import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.Dimension;
 
+import java.util.Hashtable;
+
 import javax.swing.JPanel;
 
-public class MandelbrotSet extends JPanel 
+public class MandelbrotSet extends JPanel
 {
 	int width;
 	int height;
@@ -15,10 +17,31 @@ public class MandelbrotSet extends JPanel
 	
 	BufferedImage img;
 	
+	private Hashtable<Integer, BufferedImage> imgTable = new Hashtable<Integer, BufferedImage>();
+	
 	/* 
-	 * Constructor
+	 * Constructor makes itself, gives width and height
 	 */
-	public MandelbrotSet() {}
+	public MandelbrotSet() 
+	{}
+	
+	public void buildImageTable(int w, int h) 
+	{
+		Runnable runnable = new Runnable() 
+		{
+			
+			@Override
+			public void run() {
+				for(int i = 1; i <= 16; i++) {
+			    	img = buildMandelbrot(BufferedImage.TYPE_INT_ARGB, w, h);
+			    	imgTable.put(i, img);
+
+				}
+			}
+		};
+		Thread thread = new Thread(runnable);
+		thread.start();
+	}
 	
     // Sets iteration number
     public void setIter(int newIter) 
@@ -30,17 +53,16 @@ public class MandelbrotSet extends JPanel
     @Override
     public void paintComponent(Graphics g)
     {
-    	img = buildMandelbrot(BufferedImage.TYPE_INT_ARGB);
+    	System.out.println(iter);
+    	System.out.println(imgTable.get(iter));
+    	img = imgTable.get(iter);
+    	System.out.println(imgTable);
     	g.drawImage(img, 0, 0, this);
     }
     
     
-    public BufferedImage buildMandelbrot(int type)
+    public BufferedImage buildMandelbrot(int type, int width, int height)
     {
-    	width = getWidth();
-    	height = getHeight();
-    	
-    	
     	BufferedImage image = new BufferedImage(width, height, type);
     	image = buildImage(image);
     	return image;
