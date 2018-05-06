@@ -29,18 +29,17 @@ public class BurningShip extends JPanel {
 		ComplexNumbers z = new ComplexNumbers(0, 0);
 		
 		int i = 0;	// Number of iterations
-		int maxIter = iter * 1000;
+		int maxIter = iter * 10;
 		
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
-				while (z.norm() <= 2 && i < maxIter) {
+				while (i < maxIter) {
 					double cx = -2.5 + x * (3.5 / width);
-					double cy = -1 + y * (2 / height);
-					z = new ComplexNumbers(z.x * z.x - z.y * z.y - cx,
-										   2 * Math.abs(z.x * z.y) - cy);
+					double cy = 1 - y * (3 / height);
+					z = z.multiply(z).add(Math.sqrt(cx * cx + cy * cy));
 					i++;
 				}
-				if (z.norm() > 2)
+				if (z.norm() >= 4)
 					image.setRGB(x, y, Color.BLACK.getRGB());
 			}
 		}
