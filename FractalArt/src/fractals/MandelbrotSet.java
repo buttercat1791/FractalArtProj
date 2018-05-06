@@ -78,7 +78,6 @@ public class MandelbrotSet extends JPanel
                 } 
                 if (iteration < max) img.setRGB(col, row, colors[iteration]);
                 else img.setRGB(col, row, black);
-                System.out.println("HI");
             }
         }
     	
