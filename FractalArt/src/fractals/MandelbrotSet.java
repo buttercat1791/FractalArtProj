@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.Dimension;
 
+
 import java.util.Hashtable;
 
 import javax.swing.JPanel;
@@ -17,7 +18,7 @@ public class MandelbrotSet extends JPanel
 	
 	BufferedImage img;
 	
-	Hashtable<Integer, BufferedImage> imgTable = new Hashtable<Integer, BufferedImage>();
+	Hashtable<String, BufferedImage> imgTable = new Hashtable<String, BufferedImage>();
 	
 	/* 
 	 * Constructor makes itself, gives width and height
@@ -25,8 +26,8 @@ public class MandelbrotSet extends JPanel
 	public MandelbrotSet() 
 	{}
 	
-	//Builds a hashtable of the images for fractals
-	public void buildImageTable() 
+	//Builds a hashtable of the images for fractals -> Obsolete
+	/*public void buildImageTable() 
 	{
 		Runnable runnable = new Runnable() 
 		{
@@ -43,7 +44,7 @@ public class MandelbrotSet extends JPanel
 		Thread thread = new Thread(runnable);
 		thread.start();
 
-	} 
+	} */
 	
     // Sets iteration number
     public void setIter(int newIter) 
@@ -58,11 +59,13 @@ public class MandelbrotSet extends JPanel
 
 
     	//img = imgTable.get(iter);
-    	if(imgTable.contains(iter)) {
-    		img = imgTable.get(iter);
+    	if(imgTable.contains(Integer.toString(iter))) {
+    		img = imgTable.get(Integer.toString(iter));
+    		System.out.println("Contained");
     	} else {
     		img = buildMandelbrot(BufferedImage.TYPE_INT_ARGB);
-    		imgTable.put(iter, img);
+    		imgTable.put(Integer.toString(iter), img);
+    		System.out.println("Put");
     	}
     	g.drawImage(img, 0, 0, this);
     	System.out.println(imgTable);
@@ -82,6 +85,8 @@ public class MandelbrotSet extends JPanel
     public BufferedImage buildImage(BufferedImage img, int width, int height)
     {
 
+    	
+    	
     	//Base code from https://github.com/joni/fractals/blob/master/mandelbrot/MandelbrotColor.java
     	//Modified for this project
     	int max = iter*2;
@@ -89,6 +94,7 @@ public class MandelbrotSet extends JPanel
         int[] colors = new int[max];
         for (int i = 0; i<max; i++) {
             colors[i] = Color.HSBtoRGB(i/256f, 1, i/(i+8f));
+           
     	
 	    	for (int row = 0; row < height; row++) 
 	    	{

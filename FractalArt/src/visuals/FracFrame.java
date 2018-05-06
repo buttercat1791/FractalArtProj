@@ -96,31 +96,20 @@ public class FracFrame extends JFrame {
 					break;
 				case DRAGON:
 					dragon.setIter(val);
-					dragon.revalidate();
-					dragon.repaint();
 					break;
 				case SIERPINSKI:
 					sierpinski.setIter(val);
-					sierpinski.revalidate();
-					sierpinski.repaint();
 					break;
 				case JULIA:
 					julia.setIter(val);
-					julia.revalidate();
-					julia.repaint();
 					break;
 				case SHIP:
 					ship.setIter(val);
-					ship.revalidate();
-					ship.repaint();
 					break;
 				case MANDELBROT:
 					mandelbrot.setIter(val);
-					mandelbrot.revalidate();
-					mandelbrot.repaint();
 					break;
 				}
-				contentPane.revalidate();
 				contentPane.repaint();
 			}
 		});
