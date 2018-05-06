@@ -30,6 +30,7 @@ public class FracFrame extends JFrame {
 	private SierpinskiTriangle sierpinski = new SierpinskiTriangle();
 	private JuliaSet julia = new JuliaSet();
 	private BurningShip ship = new BurningShip();
+	private MandelbrotSet mandelbrot = new MandelbrotSet();
 	
 	private Fractal mode = Fractal.CLEAR;
 
@@ -110,6 +111,11 @@ public class FracFrame extends JFrame {
 					ship.revalidate();
 					ship.repaint();
 					break;
+				case MANDELBROT:
+					mandelbrot.setIter(val);
+					mandelbrot.revalidate();
+					mandelbrot.repaint();
+					break;
 				}
 				contentPane.revalidate();
 				contentPane.repaint();
@@ -165,6 +171,18 @@ public class FracFrame extends JFrame {
 		
 		JButton btnMandelbrot = new JButton("Mandelbrot Set");
 		buttonPanel.add(btnMandelbrot);
+		btnMandelbrot.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				clear();
+				mode = Fractal.MANDELBROT;
+				mandelbrot.setIter(iterSlider.getValue());
+				contentPane.add(mandelbrot, BorderLayout.CENTER);
+				mandelbrot.setVisible(true);
+				contentPane.revalidate();
+				contentPane.repaint();
+			}
+		});
 		
 		JButton btnJulia = new JButton("Julia Set");
 		buttonPanel.add(btnJulia);
@@ -216,7 +234,8 @@ public class FracFrame extends JFrame {
 		dragon.setVisible(false);
 		sierpinski.setVisible(false);
 		julia.setVisible(false);
+		mandelbrot.setVisible(false);
 		ship.setVisible(false);
 	}
-	
 }
+	
