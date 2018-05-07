@@ -21,6 +21,21 @@ import javax.swing.JButton;
 import javax.swing.JSlider;
 import javax.swing.WindowConstants;
 
+
+/*
+ * Discrete Structures final project made by Michael Jurkoic and William Kostuch
+ * 
+ * The later iteration fractals for the Mandelbrot set, Julia set, and burning ship
+ * will chug initially (especially if you're using a 4k screen).  
+ * Please give them a little time to display before moving on to the next one, as 
+ * once you've loaded them once they're be significantly faster next time
+ * because they'll be living in a hashtable.
+ * 
+ */
+
+
+
+
 @SuppressWarnings("serial")
 public class FracFrame extends JFrame {
 
