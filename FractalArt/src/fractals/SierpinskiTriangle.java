@@ -8,6 +8,11 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
+/**
+ * @author Michael Jurkoic
+ * Generates an image of the Sierpinski Triangle
+ */
+@SuppressWarnings("serial")
 public class SierpinskiTriangle extends JPanel {
 	
 	int iter;

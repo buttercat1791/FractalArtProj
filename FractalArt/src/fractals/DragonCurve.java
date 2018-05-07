@@ -8,7 +8,13 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
-// Class borrows code from http://rosettacode.org/wiki/Dragon_curve#Java
+/**
+ * @author Michael Jurkoic
+ * @author William Kostuch
+ * Generates an image of the Dragon Curve
+ * Class borrows code from http://rosettacode.org/wiki/Dragon_curve#Java
+ */
+@SuppressWarnings("serial")
 public class DragonCurve extends JPanel {
 	
 	private List<Integer> turns;
