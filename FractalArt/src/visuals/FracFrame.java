@@ -36,6 +36,10 @@ import javax.swing.WindowConstants;
 
 
 
+/**
+ * @author Michael Jurkoic
+ * @author William Kostuch
+ */
 @SuppressWarnings("serial")
 public class FracFrame extends JFrame {
 

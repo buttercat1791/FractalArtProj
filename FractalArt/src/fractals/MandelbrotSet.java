@@ -9,6 +9,12 @@ import java.util.Hashtable;
 
 import javax.swing.JPanel;
 
+
+/**
+ * @author William Kostuch
+ * Generates image of the Mandelbrot Set
+ */
+@SuppressWarnings("serial")
 public class MandelbrotSet extends JPanel
 {
 	int width;

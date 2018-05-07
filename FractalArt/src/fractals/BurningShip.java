@@ -7,6 +7,11 @@ import java.util.Hashtable;
 
 import javax.swing.JPanel;
 
+/**
+ * @author Michael Jurkoic
+ * Generates image of Burning Ship fractal
+ */
+@SuppressWarnings("serial")
 public class BurningShip extends JPanel {
 	
 	private int width, height;

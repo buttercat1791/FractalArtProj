@@ -7,6 +7,11 @@ import java.awt.Color;
 import javax.swing.JPanel;
 import java.util.Hashtable;
 
+/**
+ * @author William Kostuch
+ * Generates an image of the Julia Set
+ */
+@SuppressWarnings("serial")
 public class JuliaSet extends JPanel
 {
 	
