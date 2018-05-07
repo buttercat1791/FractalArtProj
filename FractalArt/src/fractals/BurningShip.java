@@ -14,19 +14,10 @@ public class BurningShip extends JPanel {
 	
 	BufferedImage img;
 	
-	Hashtable<Integer, BufferedImage> imgTable = new Hashtable<Integer, BufferedImage>();
+	Hashtable<String, BufferedImage> imgTable = new Hashtable<String, BufferedImage>();
 
 	public BurningShip() {}
 	
-	public void buildImgTable() {
-		Runnable runnable = new Runnable() {
-			@Override
-			public void run() {
-				for (int i = 0; i <= 15; i++)
-					imgTable.put(i, burnShip(BufferedImage.TYPE_INT_ARGB));
-			}
-		};
-	}
 	
 	public void setIter(int newIter) {
 		iter = newIter + 1;
@@ -76,8 +67,13 @@ public class BurningShip extends JPanel {
 	
 	@Override
 	public void paintComponent(Graphics g) {
-		//img = imgTable.get(iter);
-		img = burnShip(BufferedImage.TYPE_INT_ARGB);
+    	//Checks hashtable to see if image has already been made
+    	if(imgTable.containsKey(Integer.toString(iter))) {
+    		img = imgTable.get(Integer.toString(iter));
+    	} else {
+    		img = burnShip(BufferedImage.TYPE_INT_ARGB);
+    		imgTable.put(Integer.toString(iter), img);
+    	}
 		g.drawImage(img, 0, 0, this);
 	}
 }

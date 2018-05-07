@@ -3,7 +3,6 @@ package fractals;
 import java.awt.image.BufferedImage;
 import java.awt.Graphics;
 import java.awt.Color;
-import java.awt.Dimension;
 
 
 import java.util.Hashtable;
@@ -20,32 +19,9 @@ public class MandelbrotSet extends JPanel
 	
 	Hashtable<String, BufferedImage> imgTable = new Hashtable<String, BufferedImage>();
 	
-	/* 
-	 * Constructor makes itself, gives width and height
-	 */
+	//Constructor
 	public MandelbrotSet() 
 	{}
-	
-	//Builds a hashtable of the images for fractals -> Obsolete
-	/*public void buildImageTable() 
-	{
-		Runnable runnable = new Runnable() 
-		{
-			
-			@Override
-			public void run() {
-				for(int i = 1; i <= 16; i++) {
-			    	img = buildMandelbrot(BufferedImage.TYPE_INT_ARGB);
-			    	imgTable.put(Integer.toString(i), img);
-
-				}
-			}
-		};
-		Thread thread = new Thread(runnable);
-		thread.start();
-
-	} 
-	*/
 	
     // Sets iteration number
     public void setIter(int newIter) 
@@ -57,6 +33,7 @@ public class MandelbrotSet extends JPanel
     @Override
     public void paintComponent(Graphics g)
     {
+    	//Checks hashtable to see if image has already been made
     	if(imgTable.containsKey(Integer.toString(iter))) {
     		img = imgTable.get(Integer.toString(iter));
     	} else {
@@ -78,10 +55,7 @@ public class MandelbrotSet extends JPanel
     }
     
     public BufferedImage buildImage(BufferedImage img, int width, int height)
-    {
-
-    	
-    	
+    {	
     	//Base code from https://github.com/joni/fractals/blob/master/mandelbrot/MandelbrotColor.java
     	//Modified for this project
     	int max = iter*2;
@@ -113,5 +87,5 @@ public class MandelbrotSet extends JPanel
         }
 		return img;
 
-}
+    }
 }

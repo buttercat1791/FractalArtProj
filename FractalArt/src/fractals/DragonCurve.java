@@ -49,7 +49,7 @@ public class DragonCurve extends JPanel {
     	} else if (width < height) {
     		side =  (width/2) / (Math.pow(1.3411, iter*1.));
     	}
-        g.setColor(Color.CYAN);
+        g.setColor(Color.GREEN);
         double angle = startingAngle;
         int x1 = width/3, y1 = (int)(height/1.5);
         int x2 = x1 + (int) (Math.cos(angle) * side);

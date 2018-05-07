@@ -3,24 +3,26 @@ package fractals;
 import java.awt.image.BufferedImage;
 import java.awt.Graphics;
 import java.awt.Color;
-import java.awt.Dimension;
 
 import javax.swing.JPanel;
 import java.util.Hashtable;
 
 public class JuliaSet extends JPanel
 {
+	
+	//Set up variables
 	int width;
 	int height;
 	private int iter;
 	
 	BufferedImage img;
 	
+	//Hashtable for storing images once they're made
 	Hashtable<String, BufferedImage> imgTable = new Hashtable<String, BufferedImage>();
-
+	
 	public JuliaSet() {}
 	
-    // Reruns constructor function code to refresh the image
+    // Updates iter which updates the image
     public void setIter(int newIter) 
     {
     	iter = newIter + 1;
@@ -30,6 +32,7 @@ public class JuliaSet extends JPanel
     @Override
     public void paintComponent(Graphics g)
     {
+    	//Check hashtable to see if the picture has already been made
     	if(imgTable.containsKey(Integer.toString(iter))) {
     		img = imgTable.get(Integer.toString(iter));
     	} else {
@@ -50,8 +53,8 @@ public class JuliaSet extends JPanel
     	return image;
     }
     
-    //Build image by looping through each pixel and coloring
 	/*
+	 * Build image by looping through each pixel and coloring
 	 * This code taken from https://rosettacode.org/wiki/Julia_set#Java 
 	 * and changed to use complex numbers
 	 */
@@ -75,7 +78,6 @@ public class JuliaSet extends JPanel
                 }
                 int col = Color.HSBtoRGB((maxIter / i) % 1, 1, i > 0 ? 1 : 0);
                 image.setRGB(x, y, col);
-        //End of taken code
             }
         }
         return image;

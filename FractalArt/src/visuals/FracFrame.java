@@ -113,9 +113,6 @@ public class FracFrame extends JFrame {
 				contentPane.repaint();
 			}
 		});
-		
-		//This part used for building hashtables of images
-		int imgHeight = windowHeight - iterSlider.getHeight() - buttonPanel.getHeight();
 
 
 		/*
