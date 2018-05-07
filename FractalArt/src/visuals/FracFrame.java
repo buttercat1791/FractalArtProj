@@ -21,6 +21,7 @@ import javax.swing.JButton;
 import javax.swing.JSlider;
 import javax.swing.WindowConstants;
 
+@SuppressWarnings("serial")
 public class FracFrame extends JFrame {
 
 	private JPanel contentPane = new JPanel();
