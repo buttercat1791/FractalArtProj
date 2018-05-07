@@ -174,7 +174,7 @@ public class FracFrame extends JFrame {
 				sierpinski.setIter(iterSlider.getValue());
 				contentPane.add(sierpinski, BorderLayout.CENTER);
 				sierpinski.setVisible(true);
-				contentPane.revalidate();
+			contentPane.revalidate();
 				contentPane.repaint();
 			}
 		});
