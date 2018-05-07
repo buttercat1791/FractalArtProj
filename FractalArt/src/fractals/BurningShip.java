@@ -40,7 +40,7 @@ public class BurningShip extends JPanel {
 			for (int y = 0; y < height; y++) {
 				for (int x = 0; x < width; x++) {
 					double cRe = (x - 2 * (width / 3.25)) * (5.0 / width);
-					double cIm = (y - width / 2.5) * (5.0 / width);
+					double cIm = (y - width / 3) * (5.0 / width);
 					
 					ComplexNumbers z = new ComplexNumbers(0, 0);
 					
