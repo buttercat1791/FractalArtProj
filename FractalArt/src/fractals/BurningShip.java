@@ -33,6 +33,7 @@ public class BurningShip extends JPanel {
 	}
 	
 	// zn+1 = (|Re(zn) | + i|Im(zn)|)^2 + c, z0 = 0
+	// Uses elements from MandelbrotSet class (coloration, some elements of algorithm design)
 	private BufferedImage burnShip(int type) {
 		width = getWidth();
 		height = getHeight();
@@ -56,6 +57,8 @@ public class BurningShip extends JPanel {
 					
 					// Implement iteration:
 					// zn+1 = (|Re(zn)| + i|Im(zn)|)^2 + c
+					// Complex number arithmetic derived from descriptions on 
+					// http://spanishplus.tripod.com/maths/FractalBurningShip.htm
 					while (z.norm() < 4 && iteration < maxIter) {
 						z = new ComplexNumbers(z.x * z.x - z.y * z.y,
 											   Math.abs(z.x * z.y) + Math.abs(z.x * z.y));
